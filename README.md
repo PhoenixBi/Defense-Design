@@ -7,3 +7,9 @@ We plan to develop it on Qt, though need to learn from now.
 <b>Reference and Acknowledgements<b/>:<br/>
 https://qtguide.ustclug.org/<br/>
 https://blog.csdn.net/satanzw/article/details/10418063
+
+最终决定复刻王国保卫战塔防。
+
+预计模块分工：
+窗口/塔位置/路径点/塔对象/敌人对象/子弹对象/待续
+
