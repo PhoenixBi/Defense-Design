@@ -10,11 +10,9 @@ https://blog.csdn.net/satanzw/article/details/10418063
 
 最终决定复刻王国保卫战塔防。
 
-# 程序设计A课程实践项目报告
-
 ## 概要设计
 
-### 系统总体设计  （模块）
+### 系统总体设计
 
 塔防游戏主要由以下几部分组成
 
@@ -27,15 +25,16 @@ https://blog.csdn.net/satanzw/article/details/10418063
 ### 主要数据结构
 
 ```c++
-class bullet
+class MainWindow
 {
 private:
-	const QPoint	m_startPos;	//子弹起始位置
-	const QPoint	m_targetPos;	//子弹消失位置
-	const QPixmap	m_sprite;	//子弹图片
-	QPoint	m_currentPos;	//子弹现在位置
-	Enemy *	m_target;	//目标
-	int	m_damage;	//伤害值
+	Ui::MainWindow *	ui;
+	int	m_waves;	//波数
+	int	m_playerHp;	//己方血量
+	int	m_playrGold;	//资金
+	bool	m_gameEnded;	//游戏是否结束
+	bool	m_gameWin;	//是否胜利
+    /*好像还需要维护屏幕上所有对象的表*/
 }
 
 class towerpostion
@@ -60,6 +59,24 @@ private:
 	const QPixmap	m_sprite;	//图
 }
 
+class bullet
+{
+private:
+	const QPoint	m_startPos;	//子弹起始位置
+	const QPoint	m_targetPos;	//子弹消失位置
+	const QPixmap	m_sprite;	//子弹图片
+	QPoint	m_currentPos;	//子弹现在位置
+	Enemy *	m_target;	//目标
+	int	m_damage;	//伤害值
+}
+
+class waypoint
+{
+private:
+	const QPoint	m_pos;	//坐标
+	WayPoint *	m_nextWayPoint;	//下一个路径点
+}
+
 class enemy
 {
 private:
@@ -73,47 +90,38 @@ private:
 
 	const QPixmap	m_sprite;
 }
-
-class waypoint
-{
-private:
-	const QPoint	m_pos;	//坐标
-	WayPoint *	m_nextWayPoint;	//下一个路径点
-}
-
-class MainWindow
-{
-private:
-	Ui::MainWindow *	ui;
-	int	m_waves;	//波数
-	int	m_playerHp;	//己方血量
-	int	m_playrGold;	//资金
-	bool	m_gameEnded;	//游戏是否结束
-	bool	m_gameWin;	//是否胜利
-    /*好像还需要维护屏幕上所有对象的表*/
-}
-
 ```
 
 ### 模块
 
-主要由以下几个模块组成
+*主要由以下几个模块组成*
+
+地图
 
 操作菜单与帮助
 
 地图设计
 
-控制塔的建立与拆除
-
-控制塔对敌人的攻击
-
-控制敌人的出现时间与运动状态
-
-控制敌人受到攻击的影响
-
-控制敌人成功的效果
-
-控制游戏进度提示
 
 ### 接口
+
+### 逻辑
+
+ - 交互
+ 	- 塔的建立（花费）与拆除（返现）
+
+ - 塔对敌人的攻击
+
+ - 敌人的出现时间与运动状态
+
+ - 敌人受到攻击的影响
+
+ - 敌人成功的效果
+
+ - 游戏进度提示
+ 
+ - 己方被入侵扣血
+ 
+ - 成功失败效果
+
 
